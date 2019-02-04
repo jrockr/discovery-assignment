@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package za.co.discovery.controller;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -17,22 +18,25 @@ import za.co.discovery.util.ExcelParserService;
 import java.io.IOException;
 
 /**
- *
  * @author Vinay.Joshi
  */
 
 @RestController
 @RequestMapping(value = "/api", method = RequestMethod.GET)
 public class AssignmentController {
-    
-	@Autowired
-	private ExcelParserService parser;
-	
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    public String testAPI(@RequestParam("file") MultipartFile file) throws InvalidFormatException, IOException {
+
+
+  @Autowired
+  private ExcelParserService parser;
+
+
+  @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+  public String testAPI(@RequestParam("file") MultipartFile file) throws InvalidFormatException, IOException {
 //    	ExcelParser parser = new ExcelParser();
 //    	file.transferTo(Fi);
-    	parser.parser(file.getInputStream());
-    	return "{Test Success}";
-    }
+    //parser.parser(file.getInputStream());
+    parser.parseExcel("C:\\Users\\C740129\\Documents\\My Received Files\\assignment\\src\\main\\resources\\Assignment_Data.xlsx");
+    parser.query(Long.valueOf(1));
+    return "{Test Success}";
+  }
 }

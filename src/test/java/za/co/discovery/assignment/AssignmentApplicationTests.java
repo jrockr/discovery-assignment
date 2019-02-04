@@ -16,12 +16,13 @@ public class AssignmentApplicationTests {
   private ExcelParserService excelParserService;
 
   @Test
-  public void contextLoads() {
+  public void parseExcel() {
+    excelParserService.parseExcel("C:\\Users\\C740129\\Documents\\My Received Files\\assignment\\src\\main\\resources\\Assignment_Data.xlsx");
   }
 
   @Test
-  public void parseExcel() {
-    excelParserService.parseExcel("C:\\Users\\C740129\\Documents\\My Received Files\\assignment\\src\\main\\resources\\Assignment_Data.xlsx");
+  public void queryPlanet(){
+    excelParserService.query(Long.valueOf(1));
   }
 
 }
